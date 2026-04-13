@@ -1,1 +1,4 @@
-
+if SHIELD_M1
+config ZMK_KEYBOARD_NAME
+    default "m1"
+endif
