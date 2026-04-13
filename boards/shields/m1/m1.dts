@@ -1,1 +1,29 @@
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "row2col"; 
+
+        // SPALTEN (Vertikale Linien im Bild)
+        col-gpios
+            = <&gpio0 11 GPIO_ACTIVE_HIGH> // D7
+            , <&gpio0 24 GPIO_ACTIVE_HIGH> // D5
+            , <&gpio1 00 GPIO_ACTIVE_HIGH> // D6
+            , <&gpio0 22 GPIO_ACTIVE_HIGH> // D4
+            , <&gpio0 20 GPIO_ACTIVE_HIGH> // D3
+            ;
+
+        // REIHEN (Horizontale Linien im Bild)
+        row-gpios
+            = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D11
+            , <&gpio1 04 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D8
+            , <&gpio1 06 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D9
+            , <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // D2
+            ;
+    };
+};
 
