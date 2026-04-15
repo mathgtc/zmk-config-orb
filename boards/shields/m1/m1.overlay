@@ -3,7 +3,6 @@
         zmk,kscan = &kscan_composite;
     };
 
-    // DEINE BESTEHENDE MATRIX (5x4)
     kscan0: kscan_matrix_old {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
@@ -22,28 +21,26 @@
             ;
     };
 
-    // DIE NEUE MATRIX (5 Spalten x 2 Reihen) - Gesondert verkabelt
     kscan1: kscan_matrix_new {
         compatible = "zmk,kscan-gpio-matrix";
         diode-direction = "col2row";
         col-gpios
-            = <&gpio0 15 GPIO_ACTIVE_LOW>  // Neue Spalte 1
-            , <&gpio0 13 GPIO_ACTIVE_LOW>  // Neue Spalte 2
-            , <&gpio1 11  GPIO_ACTIVE_LOW>  // Neue Spalte 3
-            , <&gpio1 2  GPIO_ACTIVE_LOW>  // Neue Spalte 4
-            , <&gpio0 9  GPIO_ACTIVE_LOW>  // Neue Spalte 5
+            = <&gpio0 15 GPIO_ACTIVE_LOW>
+            , <&gpio0 13 GPIO_ACTIVE_LOW>
+            , <&gpio1 11 GPIO_ACTIVE_LOW>
+            , <&gpio1 2  GPIO_ACTIVE_LOW>
+            , <&gpio0 9  GPIO_ACTIVE_LOW>
             ;
         row-gpios
-            = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Neue Reihe 1
-            , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Neue Reihe 2
+            = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
     };
 
-    // ZUSAMMENFÜHRUNG
     kscan_composite: kscan_composite {
         compatible = "zmk,kscan-composite";
-        rows = <6>;    // 4 (alt) + 2 (neu)
-        columns = <5>; // Beide haben 5 Spalten
+        rows = <6>;
+        columns = <5>;
 
         matrix_old {
             kscan = <&kscan0>;
@@ -51,7 +48,7 @@
 
         matrix_new {
             kscan = <&kscan1>;
-            row-offset = <4>; // Die neue Matrix beginnt ab Reihe 4
+            row-offset = <4>;
         };
     };
 };
