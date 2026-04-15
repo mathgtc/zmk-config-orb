@@ -9,18 +9,27 @@
         diode-direction = "col2row"; 
 
         col-gpios
-            = <&gpio0 11 GPIO_ACTIVE_LOW> 
-            , <&gpio0 24 GPIO_ACTIVE_LOW> 
-            , <&gpio1 00 GPIO_ACTIVE_LOW> 
-            , <&gpio0 22 GPIO_ACTIVE_LOW> 
-            , <&gpio0 20 GPIO_ACTIVE_LOW> 
+            = <&gpio0 11 GPIO_ACTIVE_LOW>   // Vorhanden: Col 0
+            , <&gpio0 24 GPIO_ACTIVE_LOW>   // Vorhanden: Col 1
+            , <&gpio1 00 GPIO_ACTIVE_LOW>   // Vorhanden: Col 2
+            , <&gpio0 22 GPIO_ACTIVE_LOW>   // Vorhanden: Col 3
+            , <&gpio0 20 GPIO_ACTIVE_LOW>   // Vorhanden: Col 4
+            /* NEUE SPALTEN */
+            , <&gpio1 15 GPIO_ACTIVE_LOW>   // NEU: Col 5 (Pin anpassen!)
+            , <&gpio1 13 GPIO_ACTIVE_LOW>   // NEU: Col 6 (Pin anpassen!)
             ;
 
         row-gpios
-            = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> 
-            , <&gpio1 04 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> 
-            , <&gpio1 06 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> 
-            , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> 
+            = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Vorhanden: Row 0
+            , <&gpio1 04 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Vorhanden: Row 1
+            , <&gpio1 06 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Vorhanden: Row 2
+            , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Vorhanden: Row 3
+            /* NEUE REIHEN */
+            , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 4 (Pin anpassen!)
+            , <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 5 (Pin anpassen!)
+            , <&gpio0 02 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 6 (Pin anpassen!)
+            , <&gpio0 09 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 7 (Pin anpassen!)
+            , <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 8 (Pin anpassen!)
             ;
     };
 };
