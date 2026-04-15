@@ -9,27 +9,25 @@
         diode-direction = "col2row"; 
 
         col-gpios
-            = <&gpio0 11 GPIO_ACTIVE_LOW>   // Vorhanden: Col 0
-            , <&gpio0 24 GPIO_ACTIVE_LOW>   // Vorhanden: Col 1
-            , <&gpio1 00 GPIO_ACTIVE_LOW>   // Vorhanden: Col 2
-            , <&gpio0 22 GPIO_ACTIVE_LOW>   // Vorhanden: Col 3
-            , <&gpio0 20 GPIO_ACTIVE_LOW>   // Vorhanden: Col 4
-            /* NEUE SPALTEN */
-            , <&gpio1 15 GPIO_ACTIVE_LOW>   // NEU: Col 5 (Pin anpassen!)
-            , <&gpio1 13 GPIO_ACTIVE_LOW>   // NEU: Col 6 (Pin anpassen!)
+            = <&gpio0 11 GPIO_ACTIVE_LOW>   // Col 0
+            , <&gpio0 24 GPIO_ACTIVE_LOW>   // Col 1
+            , <&gpio1 0  GPIO_ACTIVE_LOW>   // Col 2 (Vorher 00 -> jetzt 0)
+            , <&gpio0 22 GPIO_ACTIVE_LOW>   // Col 3
+            , <&gpio0 20 GPIO_ACTIVE_LOW>   // Col 4
+            , <&gpio0 15 GPIO_ACTIVE_LOW>   // Col 5
+            , <&gpio0 13 GPIO_ACTIVE_LOW>   // Col 6
             ;
 
         row-gpios
-            = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Vorhanden: Row 0
-            , <&gpio1 04 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Vorhanden: Row 1
-            , <&gpio1 06 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Vorhanden: Row 2
-            , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Vorhanden: Row 3
-            /* NEUE REIHEN */
-            , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 4 (Pin anpassen!)
-            , <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 5 (Pin anpassen!)
-            , <&gpio0 02 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 6 (Pin anpassen!)
-            , <&gpio0 09 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 7 (Pin anpassen!)
-            , <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // NEU: Row 8 (Pin anpassen!)
+            = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 0
+            , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 1 (Vorher 04 -> jetzt 4)
+            , <&gpio1 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 2 (Vorher 06 -> jetzt 6)
+            , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 3
+            , <&gpio1 1  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 4
+            , <&gpio1 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 5
+            , <&gpio1 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 6
+            , <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 7
+            , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 8
             ;
     };
 };
