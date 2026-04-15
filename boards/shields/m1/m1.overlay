@@ -1,33 +1,57 @@
 / {
     chosen {
-        zmk,kscan = &kscan0;
+        zmk,kscan = &kscan_composite;
     };
 
-    kscan0: kscan {
+    // DEINE BESTEHENDE MATRIX (5x4)
+    kscan0: kscan_matrix_old {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
-        diode-direction = "col2row"; 
-
+        diode-direction = "col2row";
         col-gpios
-            = <&gpio0 11 GPIO_ACTIVE_LOW>   // Col 0
-            , <&gpio0 24 GPIO_ACTIVE_LOW>   // Col 1
-            , <&gpio1 0  GPIO_ACTIVE_LOW>   // Col 2 (Vorher 00 -> jetzt 0)
-            , <&gpio0 22 GPIO_ACTIVE_LOW>   // Col 3
-            , <&gpio0 20 GPIO_ACTIVE_LOW>   // Col 4
-            , <&gpio0 15 GPIO_ACTIVE_LOW>   // Col 5
-            , <&gpio0 13 GPIO_ACTIVE_LOW>   // Col 6
+            = <&gpio0 11 GPIO_ACTIVE_LOW>
+            , <&gpio0 24 GPIO_ACTIVE_LOW>
+            , <&gpio1 0  GPIO_ACTIVE_LOW>
+            , <&gpio0 22 GPIO_ACTIVE_LOW>
+            , <&gpio0 20 GPIO_ACTIVE_LOW>
             ;
-
         row-gpios
-            = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 0
-            , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 1 (Vorher 04 -> jetzt 4)
-            , <&gpio1 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 2 (Vorher 06 -> jetzt 6)
-            , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 3
-            , <&gpio1 1  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 4
-            , <&gpio1 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 5
-            , <&gpio1 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 6
-            , <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 7
-            , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Row 8
+            = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio1 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
+    };
+
+    // DIE NEUE MATRIX (5 Spalten x 2 Reihen) - Gesondert verkabelt
+    kscan1: kscan_matrix_new {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+        col-gpios
+            = <&gpio0 15 GPIO_ACTIVE_LOW>  // Neue Spalte 1
+            , <&gpio0 13 GPIO_ACTIVE_LOW>  // Neue Spalte 2
+            , <&gpio1 1  GPIO_ACTIVE_LOW>  // Neue Spalte 3
+            , <&gpio1 2  GPIO_ACTIVE_LOW>  // Neue Spalte 4
+            , <&gpio1 7  GPIO_ACTIVE_LOW>  // Neue Spalte 5
+            ;
+        row-gpios
+            = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Neue Reihe 1
+            , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Neue Reihe 2
+            ;
+    };
+
+    // ZUSAMMENFÜHRUNG
+    kscan_composite: kscan_composite {
+        compatible = "zmk,kscan-composite";
+        rows = <6>;    // 4 (alt) + 2 (neu)
+        columns = <5>; // Beide haben 5 Spalten
+
+        matrix_old {
+            kscan = <&kscan0>;
+        };
+
+        matrix_new {
+            kscan = <&kscan1>;
+            row-offset = <4>; // Die neue Matrix beginnt ab Reihe 4
+        };
     };
 };
