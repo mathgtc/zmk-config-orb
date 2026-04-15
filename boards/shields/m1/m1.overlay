@@ -29,9 +29,9 @@
         col-gpios
             = <&gpio0 15 GPIO_ACTIVE_LOW>  // Neue Spalte 1
             , <&gpio0 13 GPIO_ACTIVE_LOW>  // Neue Spalte 2
-            , <&gpio1 1  GPIO_ACTIVE_LOW>  // Neue Spalte 3
+            , <&gpio1 11  GPIO_ACTIVE_LOW>  // Neue Spalte 3
             , <&gpio1 2  GPIO_ACTIVE_LOW>  // Neue Spalte 4
-            , <&gpio1 7  GPIO_ACTIVE_LOW>  // Neue Spalte 5
+            , <&gpio0 9  GPIO_ACTIVE_LOW>  // Neue Spalte 5
             ;
         row-gpios
             = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Neue Reihe 1
