@@ -1,4 +1,4 @@
 # This file generates the GitHub Actions matrix.
 include:
   - board: nice_nano_v2
-    shield: m1
+    shield: settings_reset
