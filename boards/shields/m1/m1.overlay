@@ -104,8 +104,8 @@
             , <&key_physical_attrs 100 100 400 300 0 0 0>
             
             // Reihe 4: Creative Tuning
-            // Das "F" als Brücke: 10 Grad geneigt
-            , <&key_physical_attrs 100 100 500 400 -10 500 400> 
+            // Das "F" als Brücke: 350 Grad (entspricht -10)
+            , <&key_physical_attrs 100 100 500 400 350 500 400> 
             
             // Das Kreuz (8, G, B, Leer): Um 15 Grad als Gruppe rotiert (Pivot bei 700, 200)
             , <&key_physical_attrs 100 100 600 200 15 700 200> // 8
@@ -114,8 +114,8 @@
             , <&key_physical_attrs 100 100 700 100 15 700 200> // Oben leer
             
             // Reihe 5: Die große Space-Taste
-            // 200 breit (2U), -20 Grad Neigung für den Daumen
-            , <&key_physical_attrs 200 100 600 500 -20 600 500> // Große Space-Taste
+            // 200 breit (2U), 340 Grad Neigung (entspricht -20) für den Daumen
+            , <&key_physical_attrs 200 100 600 500 340 600 500> // Große Space-Taste
             
             // "Parkplatz" für die restlichen ungenutzten Matrix-Plätze
             , <&key_physical_attrs 100 100 0 600 0 0 0>   
