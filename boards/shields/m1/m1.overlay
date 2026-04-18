@@ -78,46 +78,49 @@
         transform = <&default_transform>;
         kscan = <&kscan_composite>;
        keys
-            // Reihe 0 (y=0) - 4x5 Block (1 bis 5)
+            // Reihe 0 bis 3: Der Hauptblock (bleibt stabil im Raster)
             = <&key_physical_attrs 100 100 0 0 0 0 0>
             , <&key_physical_attrs 100 100 100 0 0 0 0>
             , <&key_physical_attrs 100 100 200 0 0 0 0>
             , <&key_physical_attrs 100 100 300 0 0 0 0>
             , <&key_physical_attrs 100 100 400 0 0 0 0>
             
-            // Reihe 1 (y=100) - 4x5 Block (Tab bis R)
             , <&key_physical_attrs 100 100 0 100 0 0 0>
             , <&key_physical_attrs 100 100 100 100 0 0 0>
             , <&key_physical_attrs 100 100 200 100 0 0 0>
             , <&key_physical_attrs 100 100 300 100 0 0 0>
             , <&key_physical_attrs 100 100 400 100 0 0 0>
             
-            // Reihe 2 (y=200) - 4x5 Block (Shft bis F)
             , <&key_physical_attrs 100 100 0 200 0 0 0>
             , <&key_physical_attrs 100 100 100 200 0 0 0>
             , <&key_physical_attrs 100 100 200 200 0 0 0>
             , <&key_physical_attrs 100 100 300 200 0 0 0>
             , <&key_physical_attrs 100 100 400 200 0 0 0>
             
-            // Reihe 3 (y=300) - 4x5 Block (Ctrl bis C)
             , <&key_physical_attrs 100 100 0 300 0 0 0>
             , <&key_physical_attrs 100 100 100 300 0 0 0>
             , <&key_physical_attrs 100 100 200 300 0 0 0>
             , <&key_physical_attrs 100 100 300 300 0 0 0>
             , <&key_physical_attrs 100 100 400 300 0 0 0>
             
-            // Reihe 4 - Abgesetzte Tasten (F) und das "Kreuz" (8, G, B, leere Taste)
-            , <&key_physical_attrs 100 100 500 400 0 0 0> // Abgesetztes F (schräg unten rechts vom Block)
-            , <&key_physical_attrs 100 100 600 200 0 0 0> // 8 (Kreuz links)
-            , <&key_physical_attrs 100 100 800 200 0 0 0> // G (Kreuz rechts)
-            , <&key_physical_attrs 100 100 700 300 0 0 0> // B (Kreuz unten)
-            , <&key_physical_attrs 100 100 700 100 0 0 0> // Leere Taste (Kreuz oben, vormals die '5')
+            // Reihe 4: Creative Tuning
+            // Das "F" als Brücke: 10 Grad geneigt
+            , <&key_physical_attrs 100 100 500 400 -10 500 400> 
             
-            // Reihe 5 - Space-Taste und unsichtbare/unbenutzte Tasten
-            , <&key_physical_attrs 100 100 600 500 0 0 0> // _ / Space (unter dem abgesetzten F)
-            , <&key_physical_attrs 100 100 0 600 0 0 0>   // Restliche leere Tasten "parken" wir
-            , <&key_physical_attrs 100 100 100 600 0 0 0> // einfach weit unten außerhalb
-            , <&key_physical_attrs 100 100 200 600 0 0 0> // des sichtbaren Hauptbereichs.
+            // Das Kreuz (8, G, B, Leer): Um 15 Grad als Gruppe rotiert (Pivot bei 700, 200)
+            , <&key_physical_attrs 100 100 600 200 15 700 200> // 8
+            , <&key_physical_attrs 100 100 800 200 15 700 200> // G
+            , <&key_physical_attrs 100 100 700 300 15 700 200> // B
+            , <&key_physical_attrs 100 100 700 100 15 700 200> // Oben leer
+            
+            // Reihe 5: Die große Space-Taste
+            // 200 breit (2U), -20 Grad Neigung für den Daumen
+            , <&key_physical_attrs 200 100 600 500 -20 600 500> // Große Space-Taste
+            
+            // "Parkplatz" für die restlichen ungenutzten Matrix-Plätze
+            , <&key_physical_attrs 100 100 0 600 0 0 0>   
+            , <&key_physical_attrs 100 100 100 600 0 0 0> 
+            , <&key_physical_attrs 100 100 200 600 0 0 0> 
             , <&key_physical_attrs 100 100 300 600 0 0 0> 
             ;
     };
