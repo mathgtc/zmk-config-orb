@@ -78,7 +78,7 @@
         transform = <&default_transform>;
         kscan = <&kscan_composite>;
        keys
-            // Reihe 0 bis 3: Der Hauptblock (bleibt stabil im Raster)
+            // --- HAUPTBLOCK (Bleibt unverändert) ---
             = <&key_physical_attrs 100 100 0 0 0 0 0>
             , <&key_physical_attrs 100 100 100 0 0 0 0>
             , <&key_physical_attrs 100 100 200 0 0 0 0>
@@ -103,21 +103,23 @@
             , <&key_physical_attrs 100 100 300 300 0 0 0>
             , <&key_physical_attrs 100 100 400 300 0 0 0>
             
-            // Reihe 4: Creative Tuning
-            // Das "F" als Brücke: 350 Grad (entspricht -10)
-            , <&key_physical_attrs 100 100 500 400 350 500 400> 
+            // --- F-TASTE (BRÜCKE) ---
+            // Eingestellt auf X=602, Y=470, Rotation=332
+            , <&key_physical_attrs 100 100 602 470 332 602 470> 
             
-            // Das Kreuz (8, G, B, Leer): Um 15 Grad als Gruppe rotiert (Pivot bei 700, 200)
-            , <&key_physical_attrs 100 100 600 200 15 700 200> // 8
-            , <&key_physical_attrs 100 100 800 200 15 700 200> // G
-            , <&key_physical_attrs 100 100 700 300 15 700 200> // B
-            , <&key_physical_attrs 100 100 700 100 15 700 200> // Oben leer
+            // --- STEUERKREUZ (ORB) ---
+            // Zentrum: X=799, Y=256, Rotation=0
+            // Pivot-Punkt bei allen Tasten auf 799, 256 gesetzt.
+            , <&key_physical_attrs 100 100 699 256 0 799 256> // 8 (Links: 799 - 100)
+            , <&key_physical_attrs 100 100 899 256 0 799 256> // G (Rechts: 799 + 100)
+            , <&key_physical_attrs 100 100 799 356 0 799 256> // B (Unten: 256 + 100)
+            , <&key_physical_attrs 100 100 799 156 0 799 256> // Oben leer (256 - 100)
             
-            // Reihe 5: Die große Space-Taste
-            // 200 breit (2U), 340 Grad Neigung (entspricht -20) für den Daumen
-            , <&key_physical_attrs 200 100 600 500 340 600 500> // Große Space-Taste
+            // --- SPACE-TASTE (DAUMEN) ---
+            // Eingestellt auf X=678, Y=599, Rotation=332
+            , <&key_physical_attrs 200 100 678 599 332 678 599> 
             
-            // "Parkplatz" für die restlichen ungenutzten Matrix-Plätze
+            // --- PARKPLATZ FÜR UNGENUTZTE TASTEN ---
             , <&key_physical_attrs 100 100 0 600 0 0 0>   
             , <&key_physical_attrs 100 100 100 600 0 0 0> 
             , <&key_physical_attrs 100 100 200 600 0 0 0> 
