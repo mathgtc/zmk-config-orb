@@ -1,6 +1,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h> // Wichtig für Bluetooth-Befehle
+#include <dt-bindings/zmk/bt.h>
 
 / {
     keymap {
@@ -12,11 +12,25 @@
                 &kp N1    &kp N2    &kp N3    &kp N4    &kp N5
                 &kp TAB   &kp Q     &kp W     &kp E     &kp R
                 &kp LSHFT &kp A     &kp S     &kp D     &kp F
-                &kp LCTRL &kp Z     &kp X     &kp C     &bt BT_CLR_ALL
+                &kp LCTRL &kp Z     &kp X     &kp C     &mo 1  /* HIER: Halten für Layer 1 */
 
                 /* NEUE GESONDERTE MATRIX (Reihe 4-5) */
-                &kp F   &kp N8    &kp G    &kp B    &kp N5
-                &kp SPACE    &none     &none     &none     &none
+                &kp F     &kp N8    &kp G     &kp B     &kp N5
+                &kp SPACE &none     &none     &none     &none
+            >;
+        };
+
+        second_layer {
+            bindings = <
+                /* GLEICHE BELEGUNG WIE OBEN */
+                &kp N1    &kp N2    &kp N3    &kp N4    &kp N5
+                &kp TAB   &kp Q     &kp W     &kp E     &kp R
+                &kp LSHFT &kp A     &kp S     &kp D     &kp F
+                &kp LCTRL &kp Z     &kp X     &kp C     &bt BT_CLR_ALL /* Hier bleibt der BT Clear */
+
+                /* UNTERE MATRIX */
+                &kp F     &kp N8    &kp G     &kp B     &kp N5
+                &kp SPACE &none     &none     &none     &none
             >;
         };
     };
